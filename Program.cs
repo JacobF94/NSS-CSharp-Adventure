@@ -59,10 +59,22 @@ namespace Quest
             };
 
             // Loop through all the challenges and subject the Adventurer to them
-            foreach (Challenge challenge in challenges)
+            bool adventureContinue = true;
+            while (adventureContinue)
             {
-                challenge.RunChallenge(theAdventurer);
+                foreach (Challenge challenge in challenges)
+                {
+                    challenge.RunChallenge(theAdventurer);
+                }
+                Console.WriteLine("Would you like to continue Y/N: ");
+                string answer = Console.ReadLine().ToLower();
+                if (answer == "n")
+                {
+                    adventureContinue = false;
+                }
             }
+
+
 
             // This code examines how Awesome the Adventurer is after completing the challenges
             // And praises or humiliates them accordingly
